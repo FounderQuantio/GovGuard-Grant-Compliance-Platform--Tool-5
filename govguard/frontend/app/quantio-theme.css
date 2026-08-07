@@ -340,6 +340,44 @@ input, textarea, select, button {
   overflow: hidden;
 }
 
+.qg-sidebar-overlay { display: none; }
+.qg-mobile-topbar-toggle { display: none; }
+
+@media (max-width: 768px) {
+  .qg-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 300;
+    transform: translateX(-100%);
+    transition: transform .22s ease;
+    box-shadow: 4px 0 24px rgba(0,0,0,0.25);
+  }
+  .qg-sidebar.qg-sidebar-open { transform: translateX(0); }
+  .qg-sidebar-overlay.qg-open {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    z-index: 250;
+  }
+  .qg-mobile-topbar-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    background: var(--qg-surface-2);
+    border: 1px solid var(--qg-border);
+    border-radius: var(--qg-radius-md);
+    cursor: pointer;
+    color: var(--qg-text-1);
+    flex-shrink: 0;
+    margin-right: auto;
+  }
+  .qg-report-btn-label { display: none; }
+}
+
 .qg-sidebar-header {
   padding: 16px 14px 12px;
   border-bottom: 1px solid var(--qg-border);

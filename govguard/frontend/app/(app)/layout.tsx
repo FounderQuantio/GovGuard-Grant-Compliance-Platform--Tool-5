@@ -4,7 +4,7 @@ import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
 import {
   LayoutDashboard, FileText, AlertTriangle, ClipboardCheck,
-  Settings, Users, Bell, LogOut, FileDown,
+  Settings, Users, Bell, LogOut, FileDown, Menu,
 } from "lucide-react";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { useAlertStore } from "@/lib/stores/alerts";
@@ -48,6 +48,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
     (item) => item.roles.length === 0 || hasRole(...item.roles)
   );
 
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const [reportBusy, setReportBusy] = useState(false);
   const handleDownloadReport = async () => {
     setReportBusy(true);
@@ -62,8 +63,11 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
 
   return (
     <div style={{ display: "flex", height: "100%", background: "var(--qg-bg)", overflow: "hidden" }}>
+      {sidebarOpen && (
+        <div className="qg-sidebar-overlay qg-open" onClick={() => setSidebarOpen(false)} />
+      )}
       {/* Sidebar */}
-      <aside className="qg-sidebar">
+      <aside className={`qg-sidebar${sidebarOpen ? " qg-sidebar-open" : ""}`}>
         <div className="qg-sidebar-header">
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
             <div className="qg-nav-logo-badge" style={{ fontSize: 10 }}>GG</div>
@@ -86,6 +90,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                 key={item.href}
                 href={item.href}
                 className={`qg-sidebar-item${active ? " active" : ""}`}
+                onClick={() => setSidebarOpen(false)}
               >
                 <item.icon size={14} strokeWidth={active ? 2.2 : 1.8} />
                 {item.label}
@@ -134,6 +139,13 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           gap: 10,
         }}>
           <button
+            className="qg-mobile-topbar-toggle"
+            onClick={() => setSidebarOpen((o) => !o)}
+            aria-label="Toggle navigation menu"
+          >
+            <Menu size={16} />
+          </button>
+          <button
             onClick={handleDownloadReport}
             disabled={reportBusy}
             title="Download a full findings report (KPIs, risk leaderboard)"
@@ -147,7 +159,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
             }}
           >
             <FileDown size={13} />
-            {reportBusy ? "Generating…" : "Download Report"}
+            <span className="qg-report-btn-label">{reportBusy ? "Generating…" : "Download Report"}</span>
           </button>
           <Link
             href="/notifications"
