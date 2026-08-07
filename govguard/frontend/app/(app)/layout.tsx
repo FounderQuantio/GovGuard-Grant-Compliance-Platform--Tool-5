@@ -62,7 +62,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
   };
 
   return (
-    <div style={{ display: "flex", height: "100%", background: "var(--qg-bg)", overflow: "hidden" }}>
+    <div className="qg-app-shell" style={{ display: "flex", height: "100%", background: "var(--qg-bg)", overflow: "hidden" }}>
       {sidebarOpen && (
         <div className="qg-sidebar-overlay qg-open" onClick={() => setSidebarOpen(false)} />
       )}
@@ -123,7 +123,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       </aside>
 
       {/* Main area */}
-      <div style={{ flex: 1, display: "flex", flexDirection: "column", overflow: "hidden" }}>
+      <div className="qg-app-content-col" style={{ flex: 1, display: "flex", flexDirection: "column", overflow: "hidden", minWidth: 0 }}>
         {/* Top bar */}
         <header style={{
           height: 52,
@@ -184,7 +184,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         </header>
 
         {/* Page content */}
-        <main style={{ flex: 1, overflowY: "auto", padding: 24, background: "var(--qg-bg)" }}>
+        <main className="qg-app-main" style={{ flex: 1, overflowY: "auto", padding: 24, background: "var(--qg-bg)" }}>
           {children}
         </main>
       </div>

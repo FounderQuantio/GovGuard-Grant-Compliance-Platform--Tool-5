@@ -17,8 +17,16 @@ function FooterLink({ label }: { label: string }) {
 
 export default function SiteFooter() {
   return (
-    <footer style={{ background: "#F4F5F7", borderTop: "1px solid rgba(33,36,39,0.08)", padding: "20px 40px", flexShrink: 0 }}>
-      <div style={{
+    <footer className="qg-sitefooter" style={{ background: "#F4F5F7", borderTop: "1px solid rgba(33,36,39,0.08)", padding: "20px 40px", flexShrink: 0 }}>
+      <style>{`
+        @media (max-width: 680px) {
+          .qg-sitefooter { padding: 20px 20px !important; }
+          .qg-sitefooter-inner { gap: 16px !important; }
+          .qg-sitefooter-links { gap: 20px !important; }
+          .qg-sitefooter-contact { text-align: left !important; }
+        }
+      `}</style>
+      <div className="qg-sitefooter-inner" style={{
         maxWidth: 1200, margin: "0 auto",
         display: "flex", justifyContent: "space-between", alignItems: "center",
         flexWrap: "wrap", gap: 24,
@@ -33,10 +41,10 @@ export default function SiteFooter() {
           </a>
           <p style={{ fontSize: 12, color: "rgba(33,36,39,0.4)", margin: 0 }}>Finance Governance · Risk Management · Digital Transformation</p>
         </div>
-        <div style={{ display: "flex", gap: 32 }}>
+        <div className="qg-sitefooter-links" style={{ display: "flex", gap: 32 }}>
           {FOOTER_LINKS.map(l => <FooterLink key={l} label={l} />)}
         </div>
-        <div style={{ textAlign: "right" }}>
+        <div className="qg-sitefooter-contact" style={{ textAlign: "right" }}>
           <p style={{ fontSize: 13, color: "rgba(33,36,39,0.45)", margin: 0 }}>contact@quantioglobal.net</p>
           <p style={{ fontSize: 11, color: "rgba(33,36,39,0.48)", margin: "6px 0 0" }}>© 2026 Quantio Global. All rights reserved.</p>
         </div>

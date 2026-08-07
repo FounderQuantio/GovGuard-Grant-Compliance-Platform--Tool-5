@@ -376,6 +376,9 @@ input, textarea, select, button {
     margin-right: auto;
   }
   .qg-report-btn-label { display: none; }
+  .qg-app-shell { height: auto !important; overflow: visible !important; }
+  .qg-app-content-col { overflow: visible !important; }
+  .qg-app-main { overflow-y: visible !important; }
 }
 
 .qg-sidebar-header {
