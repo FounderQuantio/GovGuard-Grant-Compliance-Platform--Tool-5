@@ -333,11 +333,9 @@ input, textarea, select, button {
   border-right: 1px solid var(--qg-border);
   display: flex;
   flex-direction: column;
-  height: 100vh;
   position: sticky;
   top: 0;
   flex-shrink: 0;
-  overflow: hidden;
 }
 
 .qg-sidebar-overlay { display: none; }
@@ -348,6 +346,7 @@ input, textarea, select, button {
     position: fixed;
     top: 0;
     left: 0;
+    height: 100vh;
     z-index: 300;
     transform: translateX(-100%);
     transition: transform .22s ease;
@@ -376,9 +375,6 @@ input, textarea, select, button {
     margin-right: auto;
   }
   .qg-report-btn-label { display: none; }
-  .qg-app-shell { height: auto !important; overflow: visible !important; }
-  .qg-app-content-col { overflow: visible !important; }
-  .qg-app-main { overflow-y: visible !important; }
 }
 
 .qg-sidebar-header {
