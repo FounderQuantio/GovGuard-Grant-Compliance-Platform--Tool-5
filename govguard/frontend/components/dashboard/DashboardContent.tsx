@@ -64,7 +64,7 @@ export function DashboardContent() {
         />
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
+      <div className="qg-grid-2">
         <RiskLeaderboard leaderboard={kpis?.riskLeaderboard ?? []} loading={isLoading} />
         <AlertTriage />
       </div>

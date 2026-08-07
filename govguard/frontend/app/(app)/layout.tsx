@@ -184,7 +184,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         </header>
 
         {/* Page content */}
-        <main className="qg-app-main" style={{ flex: 1, overflowY: "auto", padding: 24, background: "var(--qg-bg)" }}>
+        <main className="qg-app-main" style={{ flex: "0 1 auto", maxHeight: "100%", overflowY: "auto", padding: 24, background: "var(--qg-bg)" }}>
           {children}
         </main>
       </div>

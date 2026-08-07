@@ -19,7 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body style={{ fontFamily: "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}>
         <style>{`
           @media (max-width: 768px) {
-            .qg-root-shell { height: auto !important; overflow: visible !important; }
+            .qg-root-shell { height: auto !important; min-height: 100vh !important; overflow: visible !important; }
             .qg-root-content { overflow: visible !important; }
           }
         `}</style>
