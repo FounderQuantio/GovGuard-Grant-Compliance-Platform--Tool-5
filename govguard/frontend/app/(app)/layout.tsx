@@ -68,57 +68,59 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       )}
       {/* Sidebar */}
       <aside className={`qg-sidebar${sidebarOpen ? " qg-sidebar-open" : ""}`}>
-        <div className="qg-sidebar-header">
-          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            <div className="qg-nav-logo-badge" style={{ fontSize: 10 }}>GG</div>
-            <div>
-              <div style={{ color: "var(--qg-text-1)", fontWeight: 800, fontSize: 13, letterSpacing: "-0.2px" }}>
-                GovGuard™
-              </div>
-              <div style={{ color: "var(--qg-gold)", fontSize: 9, letterSpacing: "0.6px", textTransform: "uppercase", marginTop: 1 }}>
-                Compliance Platform
+        <div className="qg-sidebar-sticky">
+          <div className="qg-sidebar-header">
+            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+              <div className="qg-nav-logo-badge" style={{ fontSize: 10 }}>GG</div>
+              <div>
+                <div style={{ color: "var(--qg-text-1)", fontWeight: 800, fontSize: 13, letterSpacing: "-0.2px" }}>
+                  GovGuard™
+                </div>
+                <div style={{ color: "var(--qg-gold)", fontSize: 9, letterSpacing: "0.6px", textTransform: "uppercase", marginTop: 1 }}>
+                  Compliance Platform
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <nav className="qg-sidebar-nav">
-          {navItems.map((item) => {
-            const active = pathname.startsWith(item.href);
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`qg-sidebar-item${active ? " active" : ""}`}
-                onClick={() => setSidebarOpen(false)}
-              >
-                <item.icon size={14} strokeWidth={active ? 2.2 : 1.8} />
-                {item.label}
-              </Link>
-            );
-          })}
-        </nav>
+          <nav className="qg-sidebar-nav">
+            {navItems.map((item) => {
+              const active = pathname.startsWith(item.href);
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`qg-sidebar-item${active ? " active" : ""}`}
+                  onClick={() => setSidebarOpen(false)}
+                >
+                  <item.icon size={14} strokeWidth={active ? 2.2 : 1.8} />
+                  {item.label}
+                </Link>
+              );
+            })}
+          </nav>
 
-        <div style={{ padding: "12px 14px", borderTop: "1px solid var(--qg-border)" }}>
-          {auth0User && (
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-              <div style={{ minWidth: 0 }}>
-                <p style={{ fontSize: 12, fontWeight: 600, color: "var(--qg-text-1)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-                  {displayName}
-                </p>
-                <p style={{ fontSize: 10, color: "var(--qg-gold)", textTransform: "capitalize", marginTop: 1 }}>
-                  {role.replace(/_/g, " ")}
-                </p>
+          <div style={{ padding: "12px 14px", borderTop: "1px solid var(--qg-border)" }}>
+            {auth0User && (
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                <div style={{ minWidth: 0 }}>
+                  <p style={{ fontSize: 12, fontWeight: 600, color: "var(--qg-text-1)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                    {displayName}
+                  </p>
+                  <p style={{ fontSize: 10, color: "var(--qg-gold)", textTransform: "capitalize", marginTop: 1 }}>
+                    {role.replace(/_/g, " ")}
+                  </p>
+                </div>
+                <button
+                  onClick={() => router.push("/api/auth/logout")}
+                  style={{ padding: 6, borderRadius: "var(--qg-radius-md)", background: "transparent", border: "none", color: "var(--qg-text-4)", cursor: "pointer", transition: "var(--qg-ease)" }}
+                  title="Sign out"
+                >
+                  <LogOut size={14} />
+                </button>
               </div>
-              <button
-                onClick={() => router.push("/api/auth/logout")}
-                style={{ padding: 6, borderRadius: "var(--qg-radius-md)", background: "transparent", border: "none", color: "var(--qg-text-4)", cursor: "pointer", transition: "var(--qg-ease)" }}
-                title="Sign out"
-              >
-                <LogOut size={14} />
-              </button>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </aside>
 
