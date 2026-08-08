@@ -344,7 +344,7 @@ export default function GrantDetailPage({ params }: { params: { id: string } }) 
       </div>
 
       {/* Transactions + AI */}
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 320px", gap: 20 }}>
+      <div className="qg-grant-split">
         {/* Transactions table */}
         <div className="qg-card" style={{ padding: 0, overflow: "hidden" }}>
           <div style={{

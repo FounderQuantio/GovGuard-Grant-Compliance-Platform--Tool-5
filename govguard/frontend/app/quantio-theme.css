@@ -246,7 +246,7 @@ input, textarea, select, button {
 .qg-gap-4 { gap: var(--qg-space-4); }
 .qg-gap-6 { gap: var(--qg-space-6); }
 
-.qg-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--qg-space-4); }
+.qg-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--qg-space-4); align-items: start; }
 .qg-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--qg-space-4); }
 .qg-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--qg-space-4); }
 
@@ -257,6 +257,11 @@ input, textarea, select, button {
 @media (max-width: 640px) {
   .qg-grid-4, .qg-grid-3, .qg-grid-2 { grid-template-columns: 1fr; }
   .qg-container, .qg-container-lg { padding: 0 var(--qg-space-4); }
+}
+
+.qg-grant-split { display: grid; grid-template-columns: 1fr 320px; gap: var(--qg-space-5); align-items: start; }
+@media (max-width: 768px) {
+  .qg-grant-split { grid-template-columns: 1fr; }
 }
 
 /* --------------------------------------------------------------------------
