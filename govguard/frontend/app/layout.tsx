@@ -17,9 +17,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
       <body style={{ fontFamily: "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}>
-        <div className="qg-root-shell" style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
+        <div className="qg-root-shell">
           <SiteHeader />
-          <div className="qg-root-content" style={{ flex: 1, display: "flex", flexDirection: "column" }}>
+          <div className="qg-root-content">
             {children}
           </div>
           <SiteFooter />
